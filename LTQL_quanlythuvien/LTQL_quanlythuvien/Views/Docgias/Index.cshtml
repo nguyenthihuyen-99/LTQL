@@ -1,0 +1,58 @@
+﻿@model IEnumerable<LTQL_quanlythuvien.Models.Docgia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách độc giả</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Madocgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tendocgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mamuon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaysinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Madocgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tendocgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mamuon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ngaysinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ghichu)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Madocgia }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Madocgia }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Madocgia })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿@model LTQL_quanlythuvien.Models.Sach
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tensach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tentacgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tentacgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matacgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matacgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matheloai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matheloai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Masach }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

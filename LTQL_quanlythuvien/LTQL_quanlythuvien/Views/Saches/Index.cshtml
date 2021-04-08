@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LTQL_quanlythuvien.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Masach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tensach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tentacgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matacgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matheloai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNXB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Masach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tensach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tentacgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Matacgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Matheloai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NamXB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaNXB)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Masach }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Masach }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Masach })
+    </td>
+</tr>
+}
+
+</table>

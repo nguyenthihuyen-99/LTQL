@@ -1,0 +1,65 @@
+﻿@model LTQL_quanlythuvien.Models.ChitietMuon
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ChitietMuon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Muons.Madocgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muons.Madocgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaytra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaytra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Songayquahan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Songayquahan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tienphat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tienphat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ghichu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,51 @@
+﻿@model LTQL_quanlythuvien.Models.Docgia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Docgia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tendocgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tendocgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mamuon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mamuon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ghichu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Madocgia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

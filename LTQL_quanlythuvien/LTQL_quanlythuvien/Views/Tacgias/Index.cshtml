@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LTQL_quanlythuvien.Models.Tacgia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Matacgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tentacgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Matacgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tentacgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ghichu)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Matacgia }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Matacgia }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Matacgia })
+    </td>
+</tr>
+}
+
+</table>

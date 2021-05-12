@@ -21,8 +21,5 @@ namespace LTQL_quanlythuvien.Models
         public virtual Docgia Docgias { get; set; }
         public virtual Sach Sachs { get; set; }
         public virtual Nhanvien Nhanviens { get; set; }
-        
-        
-
     }
 }

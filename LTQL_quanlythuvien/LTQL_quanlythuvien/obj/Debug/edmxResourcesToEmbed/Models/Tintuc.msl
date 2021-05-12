@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LTQLdbModelStoreContainer" CdmEntityContainer="LTQLdbEntities1">
+    <EntitySetMapping Name="Tintucs">
+      <EntityTypeMapping TypeName="LTQLdbModel.Tintuc">
+        <MappingFragment StoreEntitySet="Tintucs">
+          <ScalarProperty Name="TintucID" ColumnName="TintucID" />
+          <ScalarProperty Name="Tacgia" ColumnName="Tacgia" />
+          <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

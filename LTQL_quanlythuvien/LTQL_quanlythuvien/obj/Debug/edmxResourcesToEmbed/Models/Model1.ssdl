@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LTQLdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ChitietMuons">
+    <Key>
+      <PropertyRef Name="MaCTmuon" />
+    </Key>
+    <Property Name="MaCTmuon" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Mamuon" Type="nvarchar" MaxLength="128" />
+    <Property Name="Ngaytra" Type="datetime" Nullable="false" />
+    <Property Name="Songayquahan" Type="int" Nullable="false" />
+    <Property Name="Tienphat" Type="int" Nullable="false" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Docgias">
+    <Key>
+      <PropertyRef Name="Madocgia" />
+    </Key>
+    <Property Name="Madocgia" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Tendocgia" Type="nvarchar(max)" />
+    <Property Name="Mamuon" Type="nvarchar(max)" />
+    <Property Name="Ngaysinh" Type="nvarchar(max)" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Muons">
+    <Key>
+      <PropertyRef Name="Mamuon" />
+    </Key>
+    <Property Name="Mamuon" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Madocgia" Type="nvarchar" MaxLength="128" />
+    <Property Name="Masach" Type="nvarchar" MaxLength="30" />
+    <Property Name="MaNV" Type="nvarchar" MaxLength="128" />
+    <Property Name="Ngaymuon" Type="nvarchar(max)" />
+    <Property Name="Hanphaitra" Type="nvarchar(max)" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="nghenghieps">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="congty" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Nhanviens">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="HotenNV" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Sodienthoai" Type="int" Nullable="false" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NhaXuatBans">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="TenNXB" Type="nvarchar(max)" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="persons">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="hoten" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Sachs">
+    <Key>
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Masach" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Tensach" Type="nvarchar(max)" />
+    <Property Name="Tentacgia" Type="nvarchar(max)" />
+    <Property Name="Matacgia" Type="nvarchar" MaxLength="128" />
+    <Property Name="Matheloai" Type="nvarchar" MaxLength="128" />
+    <Property Name="NamXB" Type="int" Nullable="false" />
+    <Property Name="MaNXB" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="tentruong" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tacgias">
+    <Key>
+      <PropertyRef Name="Matacgia" />
+    </Key>
+    <Property Name="Matacgia" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Tentacgia" Type="nvarchar(max)" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Theloais">
+    <Key>
+      <PropertyRef Name="Matheloai" />
+    </Key>
+    <Property Name="Matheloai" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Tentheloai" Type="nvarchar(max)" />
+    <Property Name="Ghichu" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_ChitietMuons_dbo_Muons_Mamuon">
+    <End Role="Muons" Type="Self.Muons" Multiplicity="0..1" />
+    <End Role="ChitietMuons" Type="Self.ChitietMuons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muons">
+        <PropertyRef Name="Mamuon" />
+      </Principal>
+      <Dependent Role="ChitietMuons">
+        <PropertyRef Name="Mamuon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Docgias_Madocgia">
+    <End Role="Docgias" Type="Self.Docgias" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Docgias">
+        <PropertyRef Name="Madocgia" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="Madocgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Nhanviens_MaNV">
+    <End Role="Nhanviens" Type="Self.Nhanviens" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nhanviens">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Sachs_Masach">
+    <End Role="Sachs" Type="Self.Sachs" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sachs">
+        <PropertyRef Name="Masach" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="Masach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_nghenghieps_dbo_persons_CCCD">
+    <End Role="persons" Type="Self.persons" Multiplicity="1" />
+    <End Role="nghenghieps" Type="Self.nghenghieps" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="CCCD" />
+      </Principal>
+      <Dependent Role="nghenghieps">
+        <PropertyRef Name="CCCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB">
+    <End Role="NhaXuatBans" Type="Self.NhaXuatBans" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sachs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaXuatBans">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_Tacgias_Matacgia">
+    <End Role="Tacgias" Type="Self.Tacgias" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sachs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tacgias">
+        <PropertyRef Name="Matacgia" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="Matacgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_Theloais_Matheloai">
+    <End Role="Theloais" Type="Self.Theloais" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sachs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theloais">
+        <PropertyRef Name="Matheloai" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="Matheloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_students_dbo_persons_CCCD">
+    <End Role="persons" Type="Self.persons" Multiplicity="1" />
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="CCCD" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="CCCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LTQLdbModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChitietMuons" EntityType="Self.ChitietMuons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Docgias" EntityType="Self.Docgias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Muons" EntityType="Self.Muons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nghenghieps" EntityType="Self.nghenghieps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nhanviens" EntityType="Self.Nhanviens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhaXuatBans" EntityType="Self.NhaXuatBans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persons" EntityType="Self.persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sachs" EntityType="Self.Sachs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tacgias" EntityType="Self.Tacgias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Theloais" EntityType="Self.Theloais" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_ChitietMuons_dbo_Muons_Mamuon" Association="Self.FK_dbo_ChitietMuons_dbo_Muons_Mamuon">
+      <End Role="Muons" EntitySet="Muons" />
+      <End Role="ChitietMuons" EntitySet="ChitietMuons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Docgias_Madocgia" Association="Self.FK_dbo_Muons_dbo_Docgias_Madocgia">
+      <End Role="Docgias" EntitySet="Docgias" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Nhanviens_MaNV" Association="Self.FK_dbo_Muons_dbo_Nhanviens_MaNV">
+      <End Role="Nhanviens" EntitySet="Nhanviens" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Sachs_Masach" Association="Self.FK_dbo_Muons_dbo_Sachs_Masach">
+      <End Role="Sachs" EntitySet="Sachs" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_nghenghieps_dbo_persons_CCCD" Association="Self.FK_dbo_nghenghieps_dbo_persons_CCCD">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="nghenghieps" EntitySet="nghenghieps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB" Association="Self.FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB">
+      <End Role="NhaXuatBans" EntitySet="NhaXuatBans" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_Tacgias_Matacgia" Association="Self.FK_dbo_Sachs_dbo_Tacgias_Matacgia">
+      <End Role="Tacgias" EntitySet="Tacgias" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_Theloais_Matheloai" Association="Self.FK_dbo_Sachs_dbo_Theloais_Matheloai">
+      <End Role="Theloais" EntitySet="Theloais" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_students_dbo_persons_CCCD" Association="Self.FK_dbo_students_dbo_persons_CCCD">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

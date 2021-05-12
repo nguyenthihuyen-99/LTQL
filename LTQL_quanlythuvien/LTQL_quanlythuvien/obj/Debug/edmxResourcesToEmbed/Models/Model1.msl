@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LTQLdbModelStoreContainer" CdmEntityContainer="LTQLdbEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="LTQLdbModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="LTQLdbModel.Account">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChitietMuons">
+      <EntityTypeMapping TypeName="LTQLdbModel.ChitietMuon">
+        <MappingFragment StoreEntitySet="ChitietMuons">
+          <ScalarProperty Name="MaCTmuon" ColumnName="MaCTmuon" />
+          <ScalarProperty Name="Mamuon" ColumnName="Mamuon" />
+          <ScalarProperty Name="Ngaytra" ColumnName="Ngaytra" />
+          <ScalarProperty Name="Songayquahan" ColumnName="Songayquahan" />
+          <ScalarProperty Name="Tienphat" ColumnName="Tienphat" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Docgias">
+      <EntityTypeMapping TypeName="LTQLdbModel.Docgia">
+        <MappingFragment StoreEntitySet="Docgias">
+          <ScalarProperty Name="Madocgia" ColumnName="Madocgia" />
+          <ScalarProperty Name="Tendocgia" ColumnName="Tendocgia" />
+          <ScalarProperty Name="Mamuon" ColumnName="Mamuon" />
+          <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Muons">
+      <EntityTypeMapping TypeName="LTQLdbModel.Muon">
+        <MappingFragment StoreEntitySet="Muons">
+          <ScalarProperty Name="Mamuon" ColumnName="Mamuon" />
+          <ScalarProperty Name="Madocgia" ColumnName="Madocgia" />
+          <ScalarProperty Name="Masach" ColumnName="Masach" />
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="Ngaymuon" ColumnName="Ngaymuon" />
+          <ScalarProperty Name="Hanphaitra" ColumnName="Hanphaitra" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nghenghieps">
+      <EntityTypeMapping TypeName="LTQLdbModel.nghenghiep">
+        <MappingFragment StoreEntitySet="nghenghieps">
+          <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+          <ScalarProperty Name="congty" ColumnName="congty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nhanviens">
+      <EntityTypeMapping TypeName="LTQLdbModel.Nhanvien">
+        <MappingFragment StoreEntitySet="Nhanviens">
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="HotenNV" ColumnName="HotenNV" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sodienthoai" ColumnName="Sodienthoai" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaXuatBans">
+      <EntityTypeMapping TypeName="LTQLdbModel.NhaXuatBan">
+        <MappingFragment StoreEntitySet="NhaXuatBans">
+          <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+          <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persons">
+      <EntityTypeMapping TypeName="LTQLdbModel.person">
+        <MappingFragment StoreEntitySet="persons">
+          <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sachs">
+      <EntityTypeMapping TypeName="LTQLdbModel.Sach">
+        <MappingFragment StoreEntitySet="Sachs">
+          <ScalarProperty Name="Masach" ColumnName="Masach" />
+          <ScalarProperty Name="Tensach" ColumnName="Tensach" />
+          <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+          <ScalarProperty Name="Matacgia" ColumnName="Matacgia" />
+          <ScalarProperty Name="Matheloai" ColumnName="Matheloai" />
+          <ScalarProperty Name="NamXB" ColumnName="NamXB" />
+          <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="LTQLdbModel.student">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+          <ScalarProperty Name="tentruong" ColumnName="tentruong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tacgias">
+      <EntityTypeMapping TypeName="LTQLdbModel.Tacgia">
+        <MappingFragment StoreEntitySet="Tacgias">
+          <ScalarProperty Name="Matacgia" ColumnName="Matacgia" />
+          <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Theloais">
+      <EntityTypeMapping TypeName="LTQLdbModel.Theloai">
+        <MappingFragment StoreEntitySet="Theloais">
+          <ScalarProperty Name="Matheloai" ColumnName="Matheloai" />
+          <ScalarProperty Name="Tentheloai" ColumnName="Tentheloai" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

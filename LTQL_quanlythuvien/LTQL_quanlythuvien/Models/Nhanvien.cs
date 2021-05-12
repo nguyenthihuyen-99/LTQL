@@ -14,7 +14,7 @@ namespace LTQL_quanlythuvien.Models
         public string MaNV { get; set; }
         public string HotenNV { get; set; }
         public string Email { get; set; }
-        public int Sodienthoai { get; set; }
+        public string Sodienthoai { get; set; }
         public string Ghichu { get; set; }
         public virtual ICollection<Muon> Muons { get; set; }
     }

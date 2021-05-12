@@ -1,0 +1,4 @@
+C:\Users\admin\source\repos\bai tap\bai tap\obj\Debug\netcoreapp3.1\bai tap.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\bai tap\bai tap\obj\Debug\netcoreapp3.1\bai tap.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\bai tap\bai tap\obj\Debug\netcoreapp3.1\bai tap.AssemblyInfo.cs
+C:\Users\admin\source\repos\bai tap\bai tap\obj\Debug\netcoreapp3.1\bai tap.csproj.CoreCompileInputs.cache

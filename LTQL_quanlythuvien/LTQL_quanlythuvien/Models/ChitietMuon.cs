@@ -8,7 +8,7 @@ using System.Web;
 namespace LTQL_quanlythuvien.Models
 {
     [Table("ChitietMuons")]
-    public class ChitietMuon
+    public class ChiTietMuon
     {
         [Key]
         public string MaCTmuon { get; set; }

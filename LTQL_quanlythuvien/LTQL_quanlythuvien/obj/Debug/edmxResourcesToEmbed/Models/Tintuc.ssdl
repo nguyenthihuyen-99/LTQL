@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LTQLdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tintucs">
+    <Key>
+      <PropertyRef Name="TintucID" />
+    </Key>
+    <Property Name="TintucID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Tacgia" Type="nvarchar(max)" />
+    <Property Name="Noidung" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="LTQLdbModelStoreContainer">
+    <EntitySet Name="Tintucs" EntityType="Self.Tintucs" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -122,6 +126,109 @@ namespace LTQL_quanlythuvien.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        //upload file
+        public ActionResult UploadExcelFile(HttpPostedFileBase file)
+        {
+            //try
+            {
+                //upload file thanh cong va file co du lieu
+                if (file.ContentLength > 0)
+                {
+                    //Your code
+                    string _FileName = "NhaXuatBan.xlsx";
+                    //duong dan luu file
+                    string _path = Path.Combine(Server.MapPath("~/Uploads/Excel"), _FileName);
+                    //luu file len server
+
+                    file.SaveAs(_path);
+                    DataTable dt = ReadDataFromExcelFile(_path);
+                    CopyDataByBulk(dt);
+
+                }
+            }
+            //catch (Exception)
+            //{
+            //neu upload file that bai
+            //}
+            return RedirectToAction("Index");
+        }
+
+        //doc file excel tra ve du lieu dang datatable
+        public DataTable ReadDataFromExcelFile(string filepath)
+        {
+            string connectionString = "";
+            string xslConn = "Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}; DBQ=" + Path.Combine(Server.MapPath("~/Uploads/Excel"));
+            string fileExtention = filepath.Substring(filepath.Length - 4).ToLower();
+            if (fileExtention.IndexOf("xlsx") == 0)
+            {
+                connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source =" + filepath + ";Extended Properties=\"Excel 12.0 Xml;HDR=NO\"";
+            }
+            else if (fileExtention.IndexOf(".xls") == 0)
+            {
+                connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filepath + ";Extended Properties=Excel 8.0";
+            }
+
+            // Tạo đối tượng kết nối
+            OleDbConnection oledbConn = new OleDbConnection(connectionString);
+            DataTable data = null;
+            try
+            {
+                // Mở kết nối
+                oledbConn.Open();
+
+                // Tạo đối tượng OleDBCommand và query data từ sheet có tên "Sheet1"
+                OleDbCommand cmd = new OleDbCommand("SELECT * FROM [NXB$]", oledbConn);
+
+                // Tạo đối tượng OleDbDataAdapter để thực thi việc query lấy dữ liệu từ tập tin excel
+                OleDbDataAdapter oleda = new OleDbDataAdapter();
+
+                oleda.SelectCommand = cmd;
+
+                // Tạo đối tượng DataSet để hứng dữ liệu từ tập tin excel
+                DataSet ds = new DataSet();
+
+                // Đổ đữ liệu từ tập excel vào DataSet
+                oleda.Fill(ds);
+
+                data = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // Đóng chuỗi kết nối
+                oledbConn.Close();
+            }
+            return data;
+        }
+        //copy large data from datatable to sqlserver
+        private void CopyDataByBulk(DataTable dt)
+        {
+            //lay ket noi voi database luu trong file webconfig
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LTQLDbContext"].ConnectionString);
+            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+            con.Open();
+            bulkcopy.DestinationTableName = "NhaXuatBans";
+            bulkcopy.ColumnMappings.Add(0, "MaNXB");
+            bulkcopy.ColumnMappings.Add(1, "TenNXB");
+            bulkcopy.ColumnMappings.Add(2, "Ghichu");
+            bulkcopy.WriteToServer(dt);
+            con.Close();
+        }
+        public ActionResult DownloadFile()
+        {
+            //duong dan chua file muon download
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/Excel/";
+            //chuyen file sang dang byte
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + "NhaXuatBan.xlsx");
+            //ten file khi download ve
+            string fileName = "NhaXuatBan.xlsx";
+            //tra ve file
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
 }

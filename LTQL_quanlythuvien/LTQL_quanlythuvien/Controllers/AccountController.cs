@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 namespace LTQL_quanlythuvien.Controllers
-{
+{   
     public class AccountController : Controller
     {
         // GET: Account
@@ -23,11 +23,16 @@ namespace LTQL_quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(AccountModel acc, string returnUrl)
         {
+            var db = new  LTQLDbContext();
+            
+            var model = db.AccountModels.Where(t => t.Username == acc.Username && t.Password == acc.Password).ToList().Count();
+                
+            
             // Nếu vượt qua được validation ở accounmodel
             if (ModelState.IsValid)
             {
                 //kiểm tra thông tin đăng nhập
-                if (acc.Username == "admin" && acc.Password == "123123")
+                if (model == 1)
                 {
                     //set cookie
                     FormsAuthentication.SetAuthCookie(acc.Username, true);

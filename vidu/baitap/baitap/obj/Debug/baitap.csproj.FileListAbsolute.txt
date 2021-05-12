@@ -1,0 +1,7 @@
+C:\Users\admin\source\repos\baitap\baitap\bin\Debug\baitap.exe.config
+C:\Users\admin\source\repos\baitap\baitap\bin\Debug\baitap.exe
+C:\Users\admin\source\repos\baitap\baitap\bin\Debug\baitap.pdb
+C:\Users\admin\source\repos\baitap\baitap\obj\Debug\baitap.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\baitap\baitap\obj\Debug\baitap.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\baitap\baitap\obj\Debug\baitap.exe
+C:\Users\admin\source\repos\baitap\baitap\obj\Debug\baitap.pdb

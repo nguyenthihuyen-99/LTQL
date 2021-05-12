@@ -1,0 +1,7 @@
+C:\Users\admin\source\repos\vidu\vidu\obj\Debug\vidu.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\vidu\vidu\obj\Debug\vidu.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\vidu\vidu\bin\Debug\vidu.exe.config
+C:\Users\admin\source\repos\vidu\vidu\bin\Debug\vidu.exe
+C:\Users\admin\source\repos\vidu\vidu\bin\Debug\vidu.pdb
+C:\Users\admin\source\repos\vidu\vidu\obj\Debug\vidu.exe
+C:\Users\admin\source\repos\vidu\vidu\obj\Debug\vidu.pdb

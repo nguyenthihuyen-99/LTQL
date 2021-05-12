@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LTQLdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChitietMuon">
+    <Key>
+      <PropertyRef Name="MaCTmuon" />
+    </Key>
+    <Property Name="MaCTmuon" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mamuon" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaytra" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Songayquahan" Type="Int32" Nullable="false" />
+    <Property Name="Tienphat" Type="Int32" Nullable="false" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Muon" Relationship="Self.FK_dbo_ChitietMuons_dbo_Muons_Mamuon" FromRole="ChitietMuons" ToRole="Muons" />
+  </EntityType>
+  <EntityType Name="Docgia">
+    <Key>
+      <PropertyRef Name="Madocgia" />
+    </Key>
+    <Property Name="Madocgia" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tendocgia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mamuon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaysinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Muons" Relationship="Self.FK_dbo_Muons_dbo_Docgias_Madocgia" FromRole="Docgias" ToRole="Muons" />
+  </EntityType>
+  <EntityType Name="Muon">
+    <Key>
+      <PropertyRef Name="Mamuon" />
+    </Key>
+    <Property Name="Mamuon" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Madocgia" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Masach" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MaNV" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaymuon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hanphaitra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChitietMuons" Relationship="Self.FK_dbo_ChitietMuons_dbo_Muons_Mamuon" FromRole="Muons" ToRole="ChitietMuons" />
+    <NavigationProperty Name="Docgia" Relationship="Self.FK_dbo_Muons_dbo_Docgias_Madocgia" FromRole="Muons" ToRole="Docgias" />
+    <NavigationProperty Name="Nhanvien" Relationship="Self.FK_dbo_Muons_dbo_Nhanviens_MaNV" FromRole="Muons" ToRole="Nhanviens" />
+    <NavigationProperty Name="Sach" Relationship="Self.FK_dbo_Muons_dbo_Sachs_Masach" FromRole="Muons" ToRole="Sachs" />
+  </EntityType>
+  <EntityType Name="nghenghiep">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="congty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="person" Relationship="Self.FK_dbo_nghenghieps_dbo_persons_CCCD" FromRole="nghenghieps" ToRole="persons" />
+  </EntityType>
+  <EntityType Name="Nhanvien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HotenNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sodienthoai" Type="Int32" Nullable="false" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Muons" Relationship="Self.FK_dbo_Muons_dbo_Nhanviens_MaNV" FromRole="Nhanviens" ToRole="Muons" />
+  </EntityType>
+  <EntityType Name="NhaXuatBan">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNXB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sachs" Relationship="Self.FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB" FromRole="NhaXuatBans" ToRole="Sachs" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="nghenghiep" Relationship="Self.FK_dbo_nghenghieps_dbo_persons_CCCD" FromRole="persons" ToRole="nghenghieps" />
+    <NavigationProperty Name="student" Relationship="Self.FK_dbo_students_dbo_persons_CCCD" FromRole="persons" ToRole="students" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Masach" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tensach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tentacgia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Matacgia" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Matheloai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="NamXB" Type="Int32" Nullable="false" />
+    <Property Name="MaNXB" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Muons" Relationship="Self.FK_dbo_Muons_dbo_Sachs_Masach" FromRole="Sachs" ToRole="Muons" />
+    <NavigationProperty Name="NhaXuatBan" Relationship="Self.FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB" FromRole="Sachs" ToRole="NhaXuatBans" />
+    <NavigationProperty Name="Tacgia" Relationship="Self.FK_dbo_Sachs_dbo_Tacgias_Matacgia" FromRole="Sachs" ToRole="Tacgias" />
+    <NavigationProperty Name="Theloai" Relationship="Self.FK_dbo_Sachs_dbo_Theloais_Matheloai" FromRole="Sachs" ToRole="Theloais" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="CCCD" />
+    </Key>
+    <Property Name="CCCD" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tentruong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="person" Relationship="Self.FK_dbo_students_dbo_persons_CCCD" FromRole="students" ToRole="persons" />
+  </EntityType>
+  <EntityType Name="Tacgia">
+    <Key>
+      <PropertyRef Name="Matacgia" />
+    </Key>
+    <Property Name="Matacgia" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tentacgia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sachs" Relationship="Self.FK_dbo_Sachs_dbo_Tacgias_Matacgia" FromRole="Tacgias" ToRole="Sachs" />
+  </EntityType>
+  <EntityType Name="Theloai">
+    <Key>
+      <PropertyRef Name="Matheloai" />
+    </Key>
+    <Property Name="Matheloai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tentheloai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sachs" Relationship="Self.FK_dbo_Sachs_dbo_Theloais_Matheloai" FromRole="Theloais" ToRole="Sachs" />
+  </EntityType>
+  <Association Name="FK_dbo_ChitietMuons_dbo_Muons_Mamuon">
+    <End Role="Muons" Type="Self.Muon" Multiplicity="0..1" />
+    <End Role="ChitietMuons" Type="Self.ChitietMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muons">
+        <PropertyRef Name="Mamuon" />
+      </Principal>
+      <Dependent Role="ChitietMuons">
+        <PropertyRef Name="Mamuon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Docgias_Madocgia">
+    <End Role="Docgias" Type="Self.Docgia" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Docgias">
+        <PropertyRef Name="Madocgia" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="Madocgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Nhanviens_MaNV">
+    <End Role="Nhanviens" Type="Self.Nhanvien" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nhanviens">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Muons_dbo_Sachs_Masach">
+    <End Role="Sachs" Type="Self.Sach" Multiplicity="0..1" />
+    <End Role="Muons" Type="Self.Muon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sachs">
+        <PropertyRef Name="Masach" />
+      </Principal>
+      <Dependent Role="Muons">
+        <PropertyRef Name="Masach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_nghenghieps_dbo_persons_CCCD">
+    <End Role="persons" Type="Self.person" Multiplicity="1" />
+    <End Role="nghenghieps" Type="Self.nghenghiep" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="CCCD" />
+      </Principal>
+      <Dependent Role="nghenghieps">
+        <PropertyRef Name="CCCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB">
+    <End Role="NhaXuatBans" Type="Self.NhaXuatBan" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaXuatBans">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_students_dbo_persons_CCCD">
+    <End Role="persons" Type="Self.person" Multiplicity="1" />
+    <End Role="students" Type="Self.student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="CCCD" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="CCCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_Tacgias_Matacgia">
+    <End Role="Tacgias" Type="Self.Tacgia" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tacgias">
+        <PropertyRef Name="Matacgia" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="Matacgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Sachs_dbo_Theloais_Matheloai">
+    <End Role="Theloais" Type="Self.Theloai" Multiplicity="0..1" />
+    <End Role="Sachs" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theloais">
+        <PropertyRef Name="Matheloai" />
+      </Principal>
+      <Dependent Role="Sachs">
+        <PropertyRef Name="Matheloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LTQLdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="ChitietMuons" EntityType="Self.ChitietMuon" />
+    <EntitySet Name="Docgias" EntityType="Self.Docgia" />
+    <EntitySet Name="Muons" EntityType="Self.Muon" />
+    <EntitySet Name="nghenghieps" EntityType="Self.nghenghiep" />
+    <EntitySet Name="Nhanviens" EntityType="Self.Nhanvien" />
+    <EntitySet Name="NhaXuatBans" EntityType="Self.NhaXuatBan" />
+    <EntitySet Name="persons" EntityType="Self.person" />
+    <EntitySet Name="Sachs" EntityType="Self.Sach" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <EntitySet Name="Tacgias" EntityType="Self.Tacgia" />
+    <EntitySet Name="Theloais" EntityType="Self.Theloai" />
+    <AssociationSet Name="FK_dbo_ChitietMuons_dbo_Muons_Mamuon" Association="Self.FK_dbo_ChitietMuons_dbo_Muons_Mamuon">
+      <End Role="Muons" EntitySet="Muons" />
+      <End Role="ChitietMuons" EntitySet="ChitietMuons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Docgias_Madocgia" Association="Self.FK_dbo_Muons_dbo_Docgias_Madocgia">
+      <End Role="Docgias" EntitySet="Docgias" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Nhanviens_MaNV" Association="Self.FK_dbo_Muons_dbo_Nhanviens_MaNV">
+      <End Role="Nhanviens" EntitySet="Nhanviens" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Muons_dbo_Sachs_Masach" Association="Self.FK_dbo_Muons_dbo_Sachs_Masach">
+      <End Role="Sachs" EntitySet="Sachs" />
+      <End Role="Muons" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_nghenghieps_dbo_persons_CCCD" Association="Self.FK_dbo_nghenghieps_dbo_persons_CCCD">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="nghenghieps" EntitySet="nghenghieps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB" Association="Self.FK_dbo_Sachs_dbo_NhaXuatBans_MaNXB">
+      <End Role="NhaXuatBans" EntitySet="NhaXuatBans" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_students_dbo_persons_CCCD" Association="Self.FK_dbo_students_dbo_persons_CCCD">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_Tacgias_Matacgia" Association="Self.FK_dbo_Sachs_dbo_Tacgias_Matacgia">
+      <End Role="Tacgias" EntitySet="Tacgias" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Sachs_dbo_Theloais_Matheloai" Association="Self.FK_dbo_Sachs_dbo_Theloais_Matheloai">
+      <End Role="Theloais" EntitySet="Theloais" />
+      <End Role="Sachs" EntitySet="Sachs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
